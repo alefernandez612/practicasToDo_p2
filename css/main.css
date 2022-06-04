@@ -1,0 +1,71 @@
+:root {
+    --bs-body-color: #fff;
+}
+
+header .d-lg-flex {
+    padding: .5em 0;
+}
+
+header nav {
+    background-color: rgba(30, 33, 38, var(--bs-bg-opacity)) !important;
+}
+
+.offcanvas {
+    background-color: rgba(30, 33, 38, var(--bs-bg-opacity)) !important;
+}
+
+.list-group-item {
+    background-color: rgba(30, 33, 38, var(--bs-bg-opacity)) !important;
+    border: 1px solid rgba(0, 0, 0, .125);
+}
+
+.form-check-input {
+    width: 1.1em;
+    height: 1.1em;
+    background-color: #495057;
+    border: 2px solid rgba(248, 249, 250, .25);
+}
+
+.form-check-input[type="checkbox"] {
+    border-radius: 50%;
+}
+
+ul.list-group-flush {
+    border-radius: .3rem;
+}
+
+.list-group-item {
+    padding: 1rem 1rem;
+    color: var(--bs-white);
+    background-color: rgba(30, 33, 38, var(--bs-bg-opacity)) !important;
+}
+
+.material-symbols-rounded {
+    font-variation-settings:
+        'FILL' 0,
+        'wght' 400,
+        'GRAD' 48,
+        'opsz' 48;
+    transition: .5s;
+}
+
+.form-control {
+    color: var(--bs-white);
+    background-color: rgba(30, 33, 38, var(--bs-bg-opacity)) !important;
+    border-radius: .25rem;
+}
+
+#task:focus {
+    color: var(--bs-white);
+}
+
+.form-select {
+    color: var(--bs-white);
+    background-color: rgba(30, 33, 38, var(--bs-bg-opacity)) !important;
+}
+
+@media (min-width: 768px) {
+    main .d-md-flex > .mb-md-0 {
+        width: 75%;
+    }
+}
