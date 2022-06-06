@@ -69,6 +69,11 @@ ul.list-group-flush {
     border-radius: .25rem;
 }
 
+#displayTask::placeholder {
+    color: #fff;
+    opacity: 1;
+}
+
 #displayTask:focus {
     color: var(--bs-white);
 }
