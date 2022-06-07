@@ -1,0 +1,1 @@
+const app = new TaskController(new TaskService(), new TaskView());
