@@ -23,12 +23,27 @@ class TaskService {
         this.tasks = this.tasks.filter(({id}) => id !== _id);
         this._commit(this.tasks);
     }
-    complete(_id) {
+    completed(_id) {
         this.tasks = this.tasks.map(task => task.id === _task.id ? new Task(_task) : task);
         this._commit(this.tasks);
     }
     important(_id) {
         this.tasks = this.tasks.map(task => task.id === _task.id ? new Task(_task) : task);
+        this._commit(this.tasks);
+    }
+    filterByImportant = () => this.tasks.filter(task => task.important);
+    filterByCompleted = () => this.tasks.filter(task => task.completed);
+    filterByDiary = () => this.tasks.filter(task => task.priority === 'diary');
+    filterByMontly = () => this.tasks.filter(task => task.priority === 'monthly');
+    filterBy(nameFilter) {
+        console.log(nameFilter);
+        const filteredTasks = {
+            'important': this.filterByImportant,
+            'completed': this.filterByCompleted,
+            'diary': this.filterByDiary,
+            'monthly': this.filterByMontly,
+        };
+        this.tasks = filteredTasks[nameFilter]() || this.tasks;
         this._commit(this.tasks);
     }
 }
