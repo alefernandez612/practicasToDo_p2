@@ -25,11 +25,8 @@ header {
     height: 1.1em;
     margin-top: 0;
     background-color: #495057;
-    border: 2px solid rgba(248, 249, 250, .25);
-}
-
-.form-check-input[type="checkbox"] {
     border-radius: 50%;
+    border: 2px solid rgba(248, 249, 250, .25);
 }
 
 ul.list-group-flush {
@@ -62,19 +59,19 @@ ul.list-group-flush {
     color: var(--bs-white);
 }
 
-#displayTask {
+.displayTask {
     padding: .187rem .75rem .375rem .75rem;
     color: var(--bs-white);
     background-color: rgba(30, 33, 38, var(--bs-bg-opacity)) !important;
     border-radius: .25rem;
 }
 
-#displayTask::placeholder {
+.displayTask::placeholder {
     color: #fff;
     opacity: 1;
 }
 
-#displayTask:focus {
+.displayTask:focus {
     color: var(--bs-white);
 }
 

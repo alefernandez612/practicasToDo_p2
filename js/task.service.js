@@ -1,7 +1,7 @@
 class TaskService {
     constructor() {
         const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
-        this.tasks = tasks.map(task => new Task(task));
+        this.tasks = tasks.map((task) => new Task(task));
     }
 
     bindTaskListChanged(callback) {
@@ -15,33 +15,41 @@ class TaskService {
         this.tasks.push(new Task(task));
         this._commit(this.tasks);
     }
-    edit(_task) {
-        this.tasks = this.tasks.map(task => task.id === _task.id ? new Task(_task) : task);
+    edit(id, _task) {
+        console.log(id);
+        this.tasks = this.tasks.map((task) =>
+            task.id === id ? new Task({...task, ..._task}) : task
+        );
         this._commit(this.tasks);
     }
-    remove(_id) {
+    delete(_id) {
         this.tasks = this.tasks.filter(({id}) => id !== _id);
         this._commit(this.tasks);
     }
-    completed(_id) {
-        this.tasks = this.tasks.map(task => task.id === _task.id ? new Task(_task) : task);
+    complete(_id) {
+        console.log(_id);
+        this.tasks = this.tasks.map((task) =>
+            task.id === _id ? new Task({...task, complete: !task.complete}) : task
+        );
         this._commit(this.tasks);
     }
     important(_id) {
-        this.tasks = this.tasks.map(task => task.id === _task.id ? new Task(_task) : task);
+        this.tasks = this.tasks.map((task) =>
+            task.id === _id ? new Task({...task, important: !task.important}) : task
+        );
         this._commit(this.tasks);
     }
-    filterByImportant = () => this.tasks.filter(task => task.important);
-    filterByCompleted = () => this.tasks.filter(task => task.completed);
-    filterByDiary = () => this.tasks.filter(task => task.priority === 'diary');
-    filterByMontly = () => this.tasks.filter(task => task.priority === 'monthly');
+    filterByImportant = () => this.tasks.filter((task) => task.important);
+    filterByComplete = () => this.tasks.filter((task) => task.complete);
+    filterByDiary = () => this.tasks.filter((task) => task.priority === 'diary');
+    filterByMontly = () =>
+        this.tasks.filter((task) => task.priority === 'monthly');
     filterBy(nameFilter) {
-        console.log(nameFilter);
         const filteredTasks = {
-            'important': this.filterByImportant,
-            'completed': this.filterByCompleted,
-            'diary': this.filterByDiary,
-            'monthly': this.filterByMontly,
+            important: this.filterByImportant,
+            complete: this.filterByComplete,
+            diary: this.filterByDiary,
+            monthly: this.filterByMontly,
         };
         this.tasks = filteredTasks[nameFilter]() || this.tasks;
         this._commit(this.tasks);
