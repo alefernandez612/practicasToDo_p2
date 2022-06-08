@@ -25,9 +25,9 @@
                     <button type="button" class="btn-close btn-close-white text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                 </div>
                 <div class="offcanvas-body">
-                    <form>
-                        <input class="form-control ms-md-5 pt-2" type="search" id="search" placeholder="Search" aria-label="Search">
-                    </form>
+
+
+                    <input class="form-control ms-md-5 pt-2" type="search" id="search" placeholder="Search" aria-label="Search">
                     <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                         <li class="nav-item">
                             <a class="nav-link active" href="index.html" aria-current="page">Task</a>
@@ -48,7 +48,7 @@
     </header>
     <main>
         <div class="container py-3">
-            <form class="d-md-flex justify-content-between align-items-start mb-4">
+            <form id="formAdd" class="d-md-flex justify-content-between align-items-start mb-4">
                 <div class="mb-1 mb-md-0">
                     <input class="form-control border-0" type="text" id="task" placeholder="Add task">
                 </div>
@@ -59,29 +59,34 @@
                         <option value="2">Monthly</option>
                     </select>
                 </div>
+                <button class="btn-dark rounded-1 py-1" id="saveTask" type="submit">Guardar</button>
             </form>
             <ul id="seeTask" class="list-group list-group-flush">
-                <li class="list-group-item d-flex justify-content-between align-items-start">
+                <!-- <li class="list-group-item d-flex justify-content-between align-items-start">
                     <div class="input-group">
                         <div class="input-group-text">
                             <input class="form-check-input me-1" type="checkbox" value="" aria-label="Checkbox for following text input">
                         </div>
                         <input type="text" class="form-control border-0" id="displayTask" placeholder="See your task" aria-label="Text input with checkbox" disabled>
                     </div>
-                    <span class="material-symbols-rounded p-1">
+                    <span id="important" class="material-symbols-rounded p-1">
                         star
                     </span>
-                    <span class="material-symbols-rounded p-1">
+                    <span id="edit" class="material-symbols-rounded p-1">
                         edit_note
                     </span>
-                    <span class="material-symbols-rounded p-1">
+                    <span id="delete" class="material-symbols-rounded p-1">
                         delete
                     </span>
-                </li>
+                </li> -->
             </ul>
         </div>
     </main>
-
+    <script src="../js/task.model.js"></script>
+    <script src="../js/task.service.js"></script>
+    <script src="../js/task.controller.js"></script>
+    <script src="../js/task.view.js"></script>
+    <script src="../js/app.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
 
