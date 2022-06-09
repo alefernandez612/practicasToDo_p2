@@ -2,19 +2,28 @@ class TaskView {
     constructor() {
         this.ulTasks = this.getElement('#seeTask');
         this.taskInput = this.getElement('#task');
+        this.taskSearch = this.getElement('#search');
         this.selectPriority = this.getElement('#selectPriority');
+        this.selectFilter = this.getElement('#selectFilter');
         this.form = this.getElement('#formAdd');
-        this._temporaryText = '';
     }
     get _taskName() {
         return this.taskInput.value;
     }
+    get _taskSearch() {
+        return this.taskSearch.value;
+    }
     get _selectPriorityValue() {
         return this.selectPriority.value;
     }
+    get _selectFilterValue() {
+        return this.selectFilter.value;
+    }
     _resetInput() {
         this.taskInput.value = '';
+        this.taskSearch.value = '';
         this.selectPriority.value = '';
+        this.selectFilter.value = '';
     }
 
     createElement(
@@ -41,8 +50,7 @@ class TaskView {
         tasks.forEach((task) => {
             const li = this.createElement({
                 tag: 'li',
-                className: [
-                    'list-group-item',
+                className: ['list-group-item',
                     'd-flex',
                     'justify-content-between',
                     'align-items-start',
@@ -62,7 +70,6 @@ class TaskView {
                 className: ['form-check-input', 'me-1'],
             });
             checkboxSubDiv.type = 'checkbox';
-            console.log(task);
             checkboxSubDiv.checked = task.complete;
             const inputMainDiv = this.createElement({
                 tag: 'input',
@@ -71,7 +78,7 @@ class TaskView {
             inputMainDiv.type = 'text';
             inputMainDiv.value = task.title;
             inputMainDiv.disabled = true;
-            task.priority === '1' ? inputMainDiv.style.color = '#05a648' : inputMainDiv.style.color = '#f38f5b';
+            task.priority === 'daily' ? inputMainDiv.style.color = '#05a650' : inputMainDiv.style.color = '#f38f5b';
             if (checkboxSubDiv.checked) {
                 inputMainDiv.style.textDecoration = 'line-through';
                 inputMainDiv.style.color = 'gray';
@@ -82,7 +89,7 @@ class TaskView {
                 idName: 'important',
             });
             spanImportant.textContent = 'star';
-            if (task.important) spanImportant.style.color = '#1c375f';
+            if (task.important) spanImportant.style.color = '#0d6efd';
             const spanEdit = this.createElement({
                 tag: 'span',
                 className: ['material-symbols-rounded', 'p-1'],
@@ -123,7 +130,9 @@ class TaskView {
     bindAddTask(handler) {
         this.form.addEventListener('submit', (event) => {
             event.preventDefault();
-            if (this._taskName) {
+            if (this._taskName === '' || this._selectPriorityValue === '') {
+                this._resetInput();
+            } else {
                 handler({
                     title: this._taskName,
                     priority: this._selectPriorityValue,
@@ -153,9 +162,18 @@ class TaskView {
             if (event.target.value) {
                 const id = event.target.parentElement.parentElement.id;
                 const key = 'title';
-
                 handler(id, {[key]: event.target.value});
             }
+        });
+    }
+    bindSearchTask(handler) {
+        this.taskSearch.addEventListener('input', (event) => {
+            handler(event.target.value);
+        });
+    }
+    bindFilterTask(handler) {
+        this.selectFilter.addEventListener('change', (event) => {
+            handler(event.target.value);
         });
     }
 }

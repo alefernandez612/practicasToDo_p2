@@ -16,7 +16,6 @@ class TaskService {
         this._commit(this.tasks);
     }
     edit(id, _task) {
-        console.log(id);
         this.tasks = this.tasks.map((task) =>
             task.id === id ? new Task({...task, ..._task}) : task
         );
@@ -27,7 +26,6 @@ class TaskService {
         this._commit(this.tasks);
     }
     complete(_id) {
-        console.log(_id);
         this.tasks = this.tasks.map((task) =>
             task.id === _id ? new Task({...task, complete: !task.complete}) : task
         );
@@ -39,19 +37,25 @@ class TaskService {
         );
         this._commit(this.tasks);
     }
+    search(value) {
+        let tasks = this.tasks;
+        if (value) tasks = this.tasks.filter((task) => task.title.includes(value));
+        this.onTaskListChanged(tasks);
+    }
     filterByImportant = () => this.tasks.filter((task) => task.important);
     filterByComplete = () => this.tasks.filter((task) => task.complete);
-    filterByDiary = () => this.tasks.filter((task) => task.priority === 'diary');
-    filterByMontly = () =>
-        this.tasks.filter((task) => task.priority === 'monthly');
+    filterByDaily = () => this.tasks.filter((task) => task.priority === 'daily');
+    filterByMontly = () => this.tasks.filter((task) => task.priority === 'monthly');
     filterBy(nameFilter) {
+        let tasks = this.tasks;
         const filteredTasks = {
             important: this.filterByImportant,
             complete: this.filterByComplete,
-            diary: this.filterByDiary,
+            daily: this.filterByDaily,
             monthly: this.filterByMontly,
+            default: this.tasks
         };
-        this.tasks = filteredTasks[nameFilter]() || this.tasks;
-        this._commit(this.tasks);
+        tasks = filteredTasks[nameFilter]() || this.tasks;
+        this.onTaskListChanged(tasks);
     }
 }

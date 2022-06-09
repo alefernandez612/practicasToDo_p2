@@ -10,6 +10,8 @@ class TaskController {
         this.taskView.bindDeleteTask(this.handleDeleteTask);
         this.taskView.bindCompleteTask(this.handleCompleteTask);
         this.taskView.bindImportantTask(this.handleImportantTask);
+        this.taskView.bindSearchTask(this.handleSearchTask);
+        this.taskView.bindFilterTask(this.handleFilterTask);
         // Display initial tasks
         this.onTaskListChanged(this.taskService.tasks);
     }
@@ -35,5 +37,11 @@ class TaskController {
     };
     handleImportantTask = (id) => {
         this.taskService.important(id);
+    };
+    handleSearchTask = (value) => {
+        this.taskService.search(value);
+    };
+    handleFilterTask = (nameFilter) => {
+        this.taskService.filterBy(nameFilter);
     };
 }
