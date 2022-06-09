@@ -1,0 +1,88 @@
+:root {
+    --bs-body-color: #fff;
+}
+
+header {
+    background-color: rgba(30, 33, 38, var(--bs-bg-opacity)) !important;
+}
+
+.list-group-item {
+    background-color: rgba(30, 33, 38, var(--bs-bg-opacity)) !important;
+    border: 1px solid rgba(0, 0, 0, .125);
+}
+
+.input-group-text {
+    background-color: rgba(30, 33, 38, var(--bs-bg-opacity)) !important;
+    border: 0;
+}
+
+.form-check-input {
+    width: 1.1em;
+    height: 1.1em;
+    margin-top: 0;
+    background-color: #495057;
+    border-radius: 50%;
+    border: 2px solid rgba(248, 249, 250, .25);
+}
+
+.list-group-item {
+    padding: 1rem 1rem;
+    color: var(--bs-white);
+    background-color: rgba(30, 33, 38, var(--bs-bg-opacity)) !important;
+}
+
+ul.list-group-flush {
+    border-radius: .3rem;
+}
+
+.material-symbols-rounded {
+    font-variation-settings:
+        'FILL' 0,
+        'wght' 400,
+        'GRAD' 48,
+        'opsz' 48;
+    transition: .5s;
+    cursor: pointer;
+}
+
+.displayTask {
+    padding: .187rem .75rem .375rem .75rem;
+    color: var(--bs-white);
+    background-color: rgba(30, 33, 38, var(--bs-bg-opacity)) !important;
+    border-radius: .25rem;
+}
+
+.displayTask::placeholder {
+    color: #fff;
+    opacity: 1;
+}
+
+.displayTask:focus {
+    color: var(--bs-white);
+}
+
+.form-select {
+    border: 1px solid rgba(248, 249, 250, .25);
+    color: var(--bs-white);
+    background-color: rgba(30, 33, 38, var(--bs-bg-opacity)) !important;
+}
+
+.btn-dark {
+    background-color: rgba(30, 33, 38, var(--bs-bg-opacity)) !important;
+    border: 1px solid rgba(248, 249, 250, .25);
+}
+
+.form-control {
+    border: 1px solid rgba(248, 249, 250, .25);
+    color: var(--bs-white);
+    background-color: rgba(30, 33, 38, var(--bs-bg-opacity)) !important;
+    border-radius: .25rem;
+}
+
+.form-control:focus {
+    color: var(--bs-white);
+}
+
+#saveTask {
+    padding: 6px 10px;
+}
