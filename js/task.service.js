@@ -53,7 +53,7 @@ class TaskService {
             daily: this.filterByDaily,
             monthly: this.filterByMontly
         };
-        this.copyTask = filteredTasks[nameFilter]() || this.tasks;
+        this.copyTask = filteredTasks[nameFilter] ? filteredTasks[nameFilter]() : this.tasks;
         this.onTaskListChanged(this.copyTask);
     }
 }
