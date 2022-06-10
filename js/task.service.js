@@ -13,8 +13,11 @@ class TaskService {
         localStorage.setItem('tasks', JSON.stringify(tasks));
     }
     add(task) {
-        this.tasks.push(new Task(task));
-        this._commit(this.tasks);
+        if (task.title !== '' && task.priority !== '') {
+            this.tasks.push(new Task(task));
+            this._commit(this.tasks);
+        }
+
     }
     edit(id, _task) {
         this.tasks = this.tasks.map((task) =>
