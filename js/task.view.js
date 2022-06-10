@@ -130,15 +130,13 @@ class TaskView {
     bindAddTask(handler) {
         this.form.addEventListener('submit', (event) => {
             event.preventDefault();
-            if (this._taskName === '' || this._selectPriorityValue === '') {
-                this._resetInput();
-            } else {
+            if (this._taskName !== '' && this._selectPriorityValue !== '') {
                 handler({
                     title: this._taskName,
                     priority: this._selectPriorityValue,
                 });
-                this._resetInput();
             }
+            this._resetInput();
         });
     }
 
