@@ -2,7 +2,6 @@ class TaskService {
     constructor() {
         const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
         this.tasks = tasks.map((task) => new Task(task));
-        let copyTask = this.tasks;
     }
 
     bindTaskListChanged(callback) {
@@ -17,7 +16,6 @@ class TaskService {
             this.tasks.push(new Task(task));
             this._commit(this.tasks);
         }
-
     }
     edit(id, _task) {
         this.tasks = this.tasks.map((task) =>
@@ -42,13 +40,12 @@ class TaskService {
         this._commit(this.tasks);
     }
     search(value) {
-        if (value) this.copyTask = this.tasks.filter((task) => task.title.includes(value));
-        this.onTaskListChanged(this.copyTask);
+        if (value) this.onTaskListChanged(this.tasks.filter((task) => task.title.includes(value)));
     }
-    filterByImportant = () => this.copyTask = this.tasks.filter((task) => task.important);
-    filterByComplete = () => this.copyTask = this.tasks.filter((task) => task.complete);
-    filterByDaily = () => this.copyTask = this.tasks.filter((task) => task.priority === 'daily');
-    filterByMontly = () => this.copyTask = this.tasks.filter((task) => task.priority === 'monthly');
+    filterByImportant = () => this.tasks.filter((task) => task.important);
+    filterByComplete = () => this.tasks.filter((task) => task.complete);
+    filterByDaily = () => this.tasks.filter((task) => task.priority === 'daily');
+    filterByMontly = () => this.tasks.filter((task) => task.priority === 'monthly');
     filterBy(nameFilter) {
         const filteredTasks = {
             important: this.filterByImportant,
@@ -56,7 +53,6 @@ class TaskService {
             daily: this.filterByDaily,
             monthly: this.filterByMontly
         };
-        this.copyTask = filteredTasks[nameFilter] ? filteredTasks[nameFilter]() : this.tasks;
-        this.onTaskListChanged(this.copyTask);
+        (nameFilter) ? this.onTaskListChanged(filteredTasks[nameFilter]()) : this.onTaskListChanged(this.tasks);
     }
 }
