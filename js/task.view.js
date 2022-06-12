@@ -4,8 +4,10 @@ class TaskView {
         this.taskInput = this.getElement('#task');
         this.taskSearch = this.getElement('#search');
         this.selectPriority = this.getElement('#selectPriority');
-        this.selectFilter = this.getElement('#selectFilter');
+        // this.selectFilter = this.getElement('#selectFilter');
+        this.selectFilter = this.getElement('#ulFilter');
         this.form = this.getElement('#formAdd');
+        this.btnSave = this.getElement('#saveTask');
     }
     get _taskName() {
         return this.taskInput.value;
@@ -16,14 +18,10 @@ class TaskView {
     get _selectPriorityValue() {
         return this.selectPriority.value;
     }
-    get _selectFilterValue() {
-        return this.selectFilter.value;
-    }
     _resetInput() {
         this.taskInput.value = '';
         this.taskSearch.value = '';
         this.selectPriority.value = '';
-        this.selectFilter.value = '';
     }
 
     createElement(
@@ -134,8 +132,7 @@ class TaskView {
         });
     }
     bindAddTask(handler) {
-        this.form.addEventListener('submit', (event) => {
-            event.preventDefault();
+        this.btnSave.addEventListener('click', () => {
             if (this._taskName) {
                 handler({
                     title: this._taskName,
@@ -176,8 +173,8 @@ class TaskView {
         });
     }
     bindFilterTask(handler) {
-        this.selectFilter.addEventListener('change', (event) => {
-            handler(event.target.value);
+        this.selectFilter.addEventListener('click', (event) => {
+            handler(event.target.id);
         });
     }
 }
