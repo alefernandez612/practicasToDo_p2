@@ -4,8 +4,7 @@ class TaskView {
         this.taskInput = this.getElement('#task');
         this.taskSearch = this.getElement('#search');
         this.selectPriority = this.getElement('#selectPriority');
-        // this.selectFilter = this.getElement('#selectFilter');
-        this.selectFilter = this.getElement('#ulFilter');
+        this.ulFilter = this.getElement('#ulFilter');
         this.form = this.getElement('#formAdd');
         this.btnSave = this.getElement('#saveTask');
     }
@@ -70,7 +69,7 @@ class TaskView {
                 });
                 const checkboxSubDiv = this.createElement({
                     tag: 'input',
-                    className: ['form-check-input', 'me-1'],
+                    className: ['form-check-input', 'me-1', 'rounded-circle'],
                 });
                 checkboxSubDiv.type = 'checkbox';
                 checkboxSubDiv.checked = task.complete;
@@ -173,7 +172,7 @@ class TaskView {
         });
     }
     bindFilterTask(handler) {
-        this.selectFilter.addEventListener('click', (event) => {
+        this.ulFilter.addEventListener('click', (event) => {
             handler(event.target.id);
         });
     }

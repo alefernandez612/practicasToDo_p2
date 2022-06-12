@@ -24,8 +24,7 @@ header {
     width: 1.1em;
     height: 1.1em;
     margin-top: 0;
-    background-color: #495057;
-    border-radius: 50% !important;
+    background-color: #343a40;
     border: 2px solid rgba(248, 249, 250, .25);
 }
 
@@ -53,7 +52,7 @@ ul.list-group-flush {
     padding: .187rem .75rem .375rem .75rem;
     color: var(--bs-white);
     background-color: rgba(30, 33, 38, var(--bs-bg-opacity)) !important;
-    border-radius: .25rem;
+    border-radius: .25rem !important;
 }
 
 .displayTask::placeholder {
@@ -85,22 +84,6 @@ ul.list-group-flush {
 
 .form-control:focus {
     color: var(--bs-white);
-}
-
-#important {
-    color: #0d6efd;
-}
-
-#daily {
-    color: #05a650;
-}
-
-#monthly {
-    color: #f38f5b;
-}
-
-#complete {
-    color: gray;
 }
 
 #saveTask {
