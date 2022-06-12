@@ -13,32 +13,71 @@
 </head>
 
 <body class="bg-dark">
-    <header class="d-flex">
-        <nav class="container navbar navbar-expand-md sticky-top navbar-dark w-100">
-            <a class="navbar-brand me-5" href="index.html">ToDo</a>
-            <form class="d-flex">
-                <input class="form-control pe-5 my-2 my-md-0 me-3 pt-2" type="search" id="search" placeholder="Search" aria-label="Search">
-                <select class="form-select d-flex flex-row my-2 my-md-0 me-md-4" id="selectFilter" aria-label="Select filter">
+    <!-- <header>
+        <div class="container">
+            <nav class="d-flex navbar navbar-expand-md sticky-top navbar-dark">
+                <a class="navbar-brand me-5" href="index.html">ToDo</a>
+                <form class="d-flex">
+                    <input class="form-control pe-5 my-2 my-md-0 me-3 pt-2" type="search" id="search" placeholder="Search" aria-label="Search">
+                    <select class="form-select d-flex flex-row my-2 my-md-0 me-md-4" id="selectFilter" aria-label="Select filter">
                     <option selected value="">Select filter</option>
                     <option value="important">Important</option>
                     <option value="complete">Complete</option>
                     <option value="daily">Daily</option>
                     <option value="monthly">Monthly</option>
                 </select>
-            </form>
-        </nav>
+                </form>
+                <ul class="nav nav-tabs nav-fill border-bottom-0 ms-auto" id="ulFilter">
+                    <li class="nav-item p-2 ps-md-5" role="button" selected>All</li>
+                    <li class="nav-item p-2 ps-md-5" role="button" id="important">Important</li>
+                    <li class="nav-item p-2 ps-md-5" role="button" id="complete">Complete</li>
+                    <li class="nav-item p-2 ps-md-5" role="button" id="daily">Daily</li>
+                    <li class="nav-item p-2 ps-md-5" role="button" id="monthly">Monthly</li>
+                </ul>
+            </nav>
+        </div>
+    </header> -->
+    <header>
+        <div class="container">
+            <nav class="d-flex navbar navbar-expand-md sticky-top navbar-dark">
+                <a class="navbar-brand navbar-brand me-5" href="index.html">ToDo</a>
+                <form>
+                    <input class="form-control pe-5 my-2 my-md-0 me-3 pt-2" type="search" id="search" placeholder="Search" aria-label="Search">
+                </form>
+                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarOffcanvasMd" aria-controls="navbarOffcanvasMd">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="offcanvas offcanvas-start" tabindex="-1" id="navbarOffcanvasMd" aria-labelledby="navbarOffcanvasMdLabel">
+                    <div class="offcanvas-header">
+                        <h5 class="offcanvas-title" id="offcanvasNavbarLabel">ToDo</h5>
+                        <button type="button" class="btn-close btn-close-white text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                    </div>
+                    <div class="offcanvas-body">
+                        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3" id="ulFilter">
+                            <li class="nav-item p-2 ps-md-5 active" role="button">All</li>
+                            <li class="nav-item p-2 ps-md-5" role="button" id="important">Important</li>
+                            <li class="nav-item p-2 ps-md-5" role="button" id="complete">Complete</li>
+                            <li class="nav-item p-2 ps-md-5" role="button" id="daily">Daily</li>
+                            <li class="nav-item p-2 ps-md-5" role="button" id="monthly">Monthly</li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
     </header>
     <main>
         <div class="container py-3">
-            <form id="formAdd" class="d-flex flex-column flex-md-row justify-content-between align-items-start mb-4">
-                <input class="form-control me-5" type="text" id="task" placeholder="Add task">
-                <select class="form-select my-2 my-md-0 me-4" id="selectPriority" aria-label="Select priority">
-                    <option selected value="">Select priority</option>
-                    <option value="daily">Daily</option>
-                    <option value="monthly">Monthly</option>
-                </select>
+            <div class="d-flex flex-column flex-md-row justify-content-between align-items-start mb-4">
+                <form id="formAdd" class="d-flex flex-column flex-md-row mb-3 w-100">
+                    <input class="form-control mb-2 mb-md-0 me-5" type="text" id="task" placeholder="Add task">
+                    <select class="form-select my-md-0 me-4" id="selectPriority" aria-label="Select priority">
+                        <option selected value="">Select priority</option>
+                        <option value="daily">Daily</option>
+                        <option value="monthly">Monthly</option>
+                    </select>
+                </form>
                 <button class="btn-dark rounded-1" id="saveTask" type="submit">Guardar</button>
-            </form>
+            </div>
             <ul id="seeTask" class="list-group list-group-flush">
             </ul>
         </div>
